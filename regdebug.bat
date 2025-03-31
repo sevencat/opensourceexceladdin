@@ -1,2 +1,2 @@
-sudo %~dp0tools\64\RegAsm.exe /codebase  %~dp0Sevencat.ExcelComAddin\bin\debug\Sevencat.ExcelComAddin.dll
-sudo %~dp0tools\32\RegAsm.exe /codebase %~dp0Sevencat.ExcelComAddin\bin\debug\Sevencat.ExcelComAddin.dll
+%~dp0tools\gsudo %~dp0tools\64\RegAsm.exe /codebase  %~dp0Sevencat.ExcelComAddin\bin\debug\Sevencat.ExcelComAddin.dll
+%~dp0tools\gsudo %~dp0tools\32\RegAsm.exe /codebase %~dp0Sevencat.ExcelComAddin\bin\debug\Sevencat.ExcelComAddin.dll
