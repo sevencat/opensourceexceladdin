@@ -1,5 +1,7 @@
-﻿namespace Sevencat.ExcelAddin.Common;
+﻿using Autofac;
 
-public class CommonModule
+namespace Sevencat.ExcelAddin.Common;
+
+public class CommonModule : Module
 {
 }

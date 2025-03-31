@@ -37,11 +37,23 @@
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
+        <Reference Include="System.Drawing" />
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="AppConstant.cs" />
         <Compile Include="CommonModule.cs" />
+        <Compile Include="IocFactory.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Service\IResourceManager.cs" />
+        <Compile Include="Util\EnvUtil.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="4.9.4" />
+      <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.5.200" />
+      <PackageReference Include="NetOfficeFw.Excel" Version="1.9.7" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="NLog" Version="5.4.0" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

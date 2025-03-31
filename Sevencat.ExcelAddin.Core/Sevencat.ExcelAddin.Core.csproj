@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Service\FileSystemResourceManager.cs" />
     <Page Include="Themes\Generic.xaml">
        <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +100,23 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="FreeSql" Version="3.5.200" />
+    <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.5.200" />
+    <PackageReference Include="HandyControl" Version="3.5.1" />
+    <PackageReference Include="NetOfficeFw.Excel" Version="1.9.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NLog" Version="5.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sevencat.ExcelAddin.Common\Sevencat.ExcelAddin.Common.csproj">
+      <Project>{b8aee5b9-d5f6-4191-afcc-6cb0b59a9e0d}</Project>
+      <Name>Sevencat.ExcelAddin.Common</Name>
+    </ProjectReference>
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
