@@ -1,9 +1,12 @@
 ﻿using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Windows;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
+// 有关程序集的一般信息由以下
+// 控制。更改这些特性值可修改
+// 与程序集关联的信息。
 [assembly: AssemblyTitle("Sevencat.ExcelAddin.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -13,23 +16,37 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
+//将 ComVisible 设置为 false 将使此程序集中的类型
+//对 COM 组件不可见。  如果需要从 COM 访问此程序集中的类型，
+//请将此类型的 ComVisible 特性设置为 true。
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("CEBB7D59-C9B1-49B8-A3DD-E46C85F5CA5A")]
+//若要开始生成可本地化的应用程序，请设置
+//.csproj 文件中的 <UICulture>CultureYouAreCodingWith</UICulture>
+//在 <PropertyGroup> 中。例如，如果你使用的是美国英语。
+//使用的是美国英语，请将 <UICulture> 设置为 en-US。  然后取消
+//对以下 NeutralResourceLanguage 特性的注释。  更新
+//以下行中的“en-US”以匹配项目文件中的 UICulture 设置。
 
-// Version information for an assembly consists of the following four values:
+//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+
+
+[assembly:ThemeInfo(
+    ResourceDictionaryLocation.None, //主题特定资源词典所处位置
+                             //(未在页面中找到资源时使用，
+                             //或应用程序资源字典中找到时使用)
+    ResourceDictionaryLocation.SourceAssembly //常规资源词典所处位置
+                                      //(未在页面中找到资源时使用，
+                                      //、应用程序或任何主题专用资源字典中找到时使用)
+)]
+
+
+// 程序集的版本信息由下列四个值组成: 
 //
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
+//      主版本
+//      次版本
+//      生成号
+//      修订号
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
