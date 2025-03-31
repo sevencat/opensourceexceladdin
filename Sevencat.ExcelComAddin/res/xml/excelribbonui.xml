@@ -6,7 +6,7 @@
             <tab id="Word02AddinCS4" label="CPU Usage">
                 <group id="group1" label="CPU Usage(CS4)">
                     <toggleButton id="paneVisibleToogleButton" label="Show CPU Usage" imageMso="CreateFormBlankForm" size="large" getPressed="OnGetPressedPanelToggle" onAction="OnCheckPanelToggle" />
-                    <button id="aboutButton" label="About CPU Usage" imageMso="AdvertisePublishAs" size="large" onAction="CommonWordFunc_Click" />
+                    <button id="aboutButton" label="About CPU Usage" imageMso="AdvertisePublishAs" size="large" onAction="RibbonBtnClick" />
                 </group>
             </tab>
         </tabs>

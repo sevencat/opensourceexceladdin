@@ -5,6 +5,7 @@ using System;
 using System.Data.SQLite;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using Autofac;
 using NetOffice.OfficeApi;
 using NetOffice.OfficeApi.Enums;
@@ -24,16 +25,19 @@ namespace Sevencat.ExcelComAddin
 	{
 		private static NLog.Logger Log;
 		private static IFreeSql Db { get; set; }
+
+		//这个东西比较奇怪，在vsto里面，这个东西得一开始就初始化，
+		//因为ribbon的回调非常非常早，在startup以前，这个设计好奇怪了。
 		private static IResourceManager _resourceManager;
 
 		//启动的时候只初始化数据库和日志
 		public MyAddin()
 		{
 			AppConstant.AppName = "SevencatExcelAddin";
-			
+
 			InitLog();
 			Log = NLog.LogManager.GetCurrentClassLogger();
-			
+
 			var codebase = typeof(MyAddin).Assembly.CodeBase;
 			var dllfn = new Uri(codebase).LocalPath;
 			var workdir = Path.GetDirectoryName(dllfn);
@@ -123,7 +127,6 @@ namespace Sevencat.ExcelComAddin
 
 		#region 回调
 
-		//TODO 后面用zip文件统一管理资源。不依赖于vsproject
 		public override string GetCustomUI(string RibbonID)
 		{
 			return _resourceManager.GetXml("excelribbonui.xml");
@@ -132,6 +135,28 @@ namespace Sevencat.ExcelComAddin
 		public void Ribbon_Load(IRibbonUI ribbonUI)
 		{
 			Log.Info("Ribbon_Load");
+		}
+
+		public void RibbonBtnClick(IRibbonControl control)
+		{
+			var id = control.Id.ToLower();
+			var func = IocFactory.GetByNameOptional<Action<IRibbonControl>>(id);
+			if (func == null)
+			{
+				Log.Error("没有{0}的处理函数", id);
+				MessageBox.Show("没有" + id + "的处理函数", "出错");
+				return;
+			}
+
+			try
+			{
+				func(control);
+			}
+			catch (Exception ex)
+			{
+				Log.LogException(ex);
+				MessageBox.Show("执行异常:" + ex.Message, "异常");
+			}
 		}
 
 		public void CommonWordFunc_Click(IRibbonControl control)

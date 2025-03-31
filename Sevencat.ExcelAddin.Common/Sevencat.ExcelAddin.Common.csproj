@@ -43,10 +43,13 @@
     <ItemGroup>
         <Compile Include="AppConstant.cs" />
         <Compile Include="CommonModule.cs" />
+        <Compile Include="ExcelWbContext.cs" />
         <Compile Include="IocFactory.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Service\IResourceManager.cs" />
+        <Compile Include="SubScopeManager.cs" />
         <Compile Include="Util\EnvUtil.cs" />
+        <Compile Include="Util\MiscExt.cs" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Autofac" Version="4.9.4" />
