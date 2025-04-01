@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--PLEASE NOTE: The CustomUI_OnLoad method is a virtual member of the COMAddin base class -->
-<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="CustomUI_OnLoad" >
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="Ribbon_Load" >
     <ribbon>
         <tabs>
-            <tab id="Word02AddinCS4" label="CPU Usage">
-                <group id="group1" label="CPU Usage(CS4)">
-                    <toggleButton id="paneVisibleToogleButton" label="Show CPU Usage" imageMso="CreateFormBlankForm" size="large" getPressed="OnGetPressedPanelToggle" onAction="OnCheckPanelToggle" />
-                    <button id="aboutButton" label="About CPU Usage" imageMso="AdvertisePublishAs" size="large" onAction="RibbonBtnClick" />
+            <tab id="sevencatexceladdtab1" label="开源excel插件">
+                <group id="groupNameFunc" label="My Group">
+                    <button id="NameSplit" label="姓名分开" size="large" onAction="RibbonBtnClick" />
                 </group>
             </tab>
         </tabs>

@@ -107,6 +107,8 @@ namespace Sevencat.ExcelComAddin
 		private void MyAddin_OnConnection(object application, ext_ConnectMode connectMode, object addInInst,
 			ref Array custom)
 		{
+			IocFactory.Application = this.Application;
+			
 			var builder = new ContainerBuilder();
 			builder.RegisterInstance(Application);
 			builder.RegisterInstance(Db);

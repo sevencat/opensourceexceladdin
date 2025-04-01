@@ -1,5 +1,7 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Autofac;
+using NetOffice.OfficeApi;
 using Sevencat.ExcelAddin.Common;
 using Sevencat.ExcelAddin.Common.Service;
 using Sevencat.ExcelAddin.Core.Service;
@@ -14,6 +16,14 @@ public class CoreModule : Module
 
 		builder.RegisterType<FileSystemResourceManager>().AsSelf().As<IResourceManager>().SingleInstance();
 		//RegisterNamedUserControl<WpfMainFrame>(builder, AppConstant.Uc_MainFrame);
+
+		RegisterExcelFunc(builder, "NameSplit", NameFunctions.NameSplit);
+	}
+
+	private static void RegisterExcelFunc(ContainerBuilder builder, string name, Action act)
+	{
+		Action<IRibbonControl> ribbonControl = _ => act();
+		builder.RegisterInstance(ribbonControl).Named<Action<IRibbonControl>>(name.ToLower()).SingleInstance();
 	}
 
 	private static void RegisterNamedUserControl<T>(ContainerBuilder builder, string name)

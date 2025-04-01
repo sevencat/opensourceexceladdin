@@ -6,9 +6,11 @@ public class IocFactory
 {
 	public static ILifetimeScope ServiceProvider { get; set; }
 
+	public static NetOffice.ExcelApi.Application Application { get; set; }
+
 	public static NetOffice.ExcelApi.Application GetExcelApplication()
 	{
-		return ServiceProvider.Resolve<NetOffice.ExcelApi.Application>();
+		return Application;
 	}
 
 	public static T Get<T>()

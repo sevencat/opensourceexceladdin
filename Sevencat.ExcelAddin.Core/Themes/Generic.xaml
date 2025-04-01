@@ -2,17 +2,18 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Sevencat.ExcelAddin.Core">
-    <Style TargetType="{x:Type local:CustomControl1}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:CustomControl1}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="ButtonStackPanelStyle" TargetType="{x:Type StackPanel}">
+        <Setter Property="StackPanel.Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="0,12,0,0" />
     </Style>
+    
+    <Geometry x:Key="TableSelectCells">
+        M960 31.968H64a32 32 0 0 0-32 32v896.064c0 17.632 14.336 32 32 32h896a32 32 0 0 0 32-32V63.968a32 32 0 0 0-32-32z m-32 896H96V96h832v831.968z M352 864V320h512V160H160v704h192zM703.968 224H800v64h-96.032V224zM544 224h96v64h-96V224z m-160 0h96v64h-96V224zM224 224h96v64H224V224z m0 128h96v64H224v-64z m0 128h96v64H224v-64z m0 127.968h96v64H224v-64z m0 128h96v64H224v-64z M640 288h-96V224h96v64z m160-64h-96.032v64H800V224zM480 224h-96v64h96V224z m-160 0H224v64h96V224z m0 383.968H224v64h96v-64z m0 128H224v64h96v-64zM320 480H224v64h96v-64z m0-128H224v64h96v-64z M352 864h512V320H352v544z m351.968-512H800v64h-96.032v-64z m-0.032 128H800v64h-96.064v-64z m0 127.968H800v64h-96.064v-64z m0 128H800v64h-96.064v-64zM543.968 352H640v64h-96.032v-64z m-0.032 128H640v64h-96.064v-64z m0 127.968H640v64h-96.064v-64z m0 128H640v64h-96.064v-64zM384 352h96v64h-96v-64z m0 128h96v64h-96v-64z m0 127.968h96v64h-96v-64z m0 128h96v64h-96v-64z M480.064 864H704v-192.032h-223.936V864z m63.968-128h96v64h-96v-64z m96.032-320.032V608H864v-192.032h-223.936zM800.032 544h-96v-64h96v64z M640.032 800h-96v-64h96v64z m64-256h96v-64h-96v64z
+    </Geometry>
 </ResourceDictionary>
