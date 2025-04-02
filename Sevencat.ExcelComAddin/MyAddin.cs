@@ -3,6 +3,7 @@ using NetOffice.ExcelApi.Tools;
 using NetOffice.Tools;
 using System;
 using System.Data.SQLite;
+using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -133,6 +134,11 @@ namespace Sevencat.ExcelComAddin
 		{
 			return _resourceManager.GetXml("excelribbonui.xml");
 		}
+		
+		public Image GetImage(string ImageName)
+		{
+			return _resourceManager.GetImage(ImageName);
+		}
 
 		public void Ribbon_Load(IRibbonUI ribbonUI)
 		{
@@ -160,6 +166,8 @@ namespace Sevencat.ExcelComAddin
 				MessageBox.Show("执行异常:" + ex.Message, "异常");
 			}
 		}
+		
+		
 
 		public void CommonWordFunc_Click(IRibbonControl control)
 		{

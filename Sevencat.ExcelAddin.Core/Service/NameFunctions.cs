@@ -10,6 +10,21 @@ public class NameFunctions
 		var win = new WinNameSplitInput();
 		win.ShowDialog();
 	}
+
+	public static void NameAddBlank()
+	{
+		
+	}
+
+	public static void NameGenRandom()
+	{
+		
+	}
+
+	public static void NameAddStarMask()
+	{
+		
+	}
 	
 	public static void Register(Container ct)
 	{

@@ -4,6 +4,7 @@ using System.Windows;
 using NetOffice.ExcelApi;
 using Sevencat.ExcelAddin.Common;
 using Sevencat.ExcelAddin.Common.Util;
+using Sevencat.ExcelAddin.Core.Service;
 using Window = System.Windows.Window;
 
 namespace Sevencat.ExcelAddin.Core.Ui
@@ -15,8 +16,11 @@ namespace Sevencat.ExcelAddin.Core.Ui
 	{
 		private Range _selrange;
 
+		readonly NameFuncService _nameFuncService;
+
 		public WinNameSplitInput()
 		{
+			_nameFuncService = IocFactory.Get<NameFuncService>();
 			InitializeComponent();
 		}
 
@@ -73,9 +77,31 @@ namespace Sevencat.ExcelAddin.Core.Ui
 
 		private void Handle(Worksheet ws, string col, SortedSet<int> rows)
 		{
-			foreach (var row in rows)
+			var app = ws.Application;
+			app.ScreenUpdating = false;
+			try
 			{
-				ws.Cells[row, col].Value = "测试" + col + "," + row;
+				foreach (var row in rows)
+				{
+					using (var cell = ws.Cells[row, col])
+					{
+						var orgvalue = cell.Value2?.ToString();
+						if (orgvalue.IsNullOrWhiteSpace())
+							continue;
+						var namepair = _nameFuncService.SplitName(orgvalue);
+						if (namepair.Item1.IsNullOrWhiteSpace())
+							continue;
+						using (var nextcell = cell.Offset(0, 1))
+						{
+							cell.Value = namepair.Item1;
+							nextcell.Value = namepair.Item2;
+						}
+					}
+				}
+			}
+			finally
+			{
+				app.ScreenUpdating = true;
 			}
 		}
 

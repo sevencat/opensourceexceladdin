@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--PLEASE NOTE: The CustomUI_OnLoad method is a virtual member of the COMAddin base class -->
-<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="Ribbon_Load" >
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="Ribbon_Load" loadImage="GetImage">
     <ribbon>
         <tabs>
             <tab id="sevencatexceladdtab1" label="开源excel插件">
-                <group id="groupNameFunc" label="My Group">
-                    <button id="NameSplit" label="姓名分开" size="large" onAction="RibbonBtnClick" />
+                <group id="groupNameFunc">
+                    <button id="NameAddStarMask" image="name.png" label="姓名部分变星号" size="large" onAction="RibbonBtnClick"/>
+                    <button id="NameSplit" label="姓名分开" onAction="RibbonBtnClick"/>
+                    <button id="NameAddBlank" label="姓名加空格" onAction="RibbonBtnClick"/>
+                    <button id="NameGenRandom" label="生成随机姓名" onAction="RibbonBtnClick"/>
                 </group>
             </tab>
         </tabs>
