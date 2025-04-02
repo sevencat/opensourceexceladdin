@@ -101,6 +101,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="res\img\execing.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="res\img\name.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

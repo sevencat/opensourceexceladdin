@@ -1,11 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sevencat.ExcelAddin.Common.Util;
+using Sevencat.ExcelAddin.Core.Ui;
 
 namespace Sevencat.ExcelAddin.Core.Service;
 
 public class NameFuncService
 {
+	#region 函数处理
+
+	public static void NameSplit()
+	{
+		var win = new WinNameSplitInput();
+		win.ShowDialog();
+	}
+
+	public static void NameAddBlank()
+	{
+	}
+
+	public static void NameGenRandom()
+	{
+	}
+
+	public static void NameAddStarMask()
+	{
+	}
+
+	#endregion
+
+
 	readonly HashSet<string> doubleSurName =
 	[
 		"万俟", "司马", "上官", "欧阳", "夏侯", "诸葛", "闻人", "东方",
@@ -18,7 +42,7 @@ public class NameFuncService
 
 	public Tuple<string, string> SplitName(string namex)
 	{
-		return Tuple.Create<string, string>("1","2");
+		return Tuple.Create<string, string>("1", "2");
 		if (namex.IsNullOrWhiteSpace())
 			return Tuple.Create("", "");
 		var name = namex.Trim();

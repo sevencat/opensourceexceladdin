@@ -15,14 +15,25 @@ public class CoreModule : Module
 		ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 		builder.RegisterType<NameFuncService>().AsSelf().SingleInstance();
-
+		RegisterExcelFunc(builder, "NameSplit", NameFuncService.NameSplit);
+		RegisterExcelFunc(builder, "NameAddBlank", NameFuncService.NameAddBlank);
+		RegisterExcelFunc(builder, "NameGenRandom", NameFuncService.NameGenRandom);
+		RegisterExcelFunc(builder, "NameAddStarMask", NameFuncService.NameAddStarMask);
+		
+		builder.RegisterType<TextProcFuncService>().AsSelf().SingleInstance();
+		RegisterExcelFunc(builder, "TextProcExtract", TextProcFuncService.Extract);
+		RegisterExcelFunc(builder, "TextProcFilter", TextProcFuncService.Filter);
+		
+		builder.RegisterType<RibbonFlagService>().AsSelf().SingleInstance();
 		builder.RegisterType<FileSystemResourceManager>().AsSelf().As<IResourceManager>().SingleInstance();
+		
+		
+		
 		//RegisterNamedUserControl<WpfMainFrame>(builder, AppConstant.Uc_MainFrame);
 
-		RegisterExcelFunc(builder, "NameSplit", NameFunctions.NameSplit);
-		RegisterExcelFunc(builder, "NameAddBlank", NameFunctions.NameAddBlank);
-		RegisterExcelFunc(builder, "NameGenRandom", NameFunctions.NameGenRandom);
-		RegisterExcelFunc(builder, "NameAddStarMask", NameFunctions.NameAddStarMask);
+		
+
+		
 	}
 
 	private static void RegisterExcelFunc(ContainerBuilder builder, string name, Action act)

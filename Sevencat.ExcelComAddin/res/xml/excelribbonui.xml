@@ -4,8 +4,20 @@
     <ribbon>
         <tabs>
             <tab id="sevencatexceladdtab1" label="开源excel插件">
+                <group id="groupTextHandleFunc" label="文本处理">
+                    <checkBox id="test1" label="空格" onAction="RibbonCheckboxClick"/>
+                    <checkBox id="test2" label="符号" onAction="RibbonCheckboxClick"/>
+                    <checkBox id="test3" label="数字" onAction="RibbonCheckboxClick"/>
+                    <checkBox id="test4" label="英文" onAction="RibbonCheckboxClick"/>
+                    <checkBox id="test5" label="中文" onAction="RibbonCheckboxClick"/>
+                    <menu id="TextHandleFuncMenu1" label="执行" image="execing.png">
+                        <button id="TextProcExtract" label="提取" onAction="RibbonBtnClick"/>
+                        <button id="TextProcFilter" label="过滤" onAction="RibbonBtnClick"/>
+                    </menu>
+                </group>
                 <group id="groupNameFunc">
-                    <button id="NameAddStarMask" image="name.png" label="姓名部分变星号" size="large" onAction="RibbonBtnClick"/>
+                    <button id="NameAddStarMask" image="name.png" label="姓名部分变星号" size="large"
+                            onAction="RibbonBtnClick"/>
                     <button id="NameSplit" label="姓名分开" onAction="RibbonBtnClick"/>
                     <button id="NameAddBlank" label="姓名加空格" onAction="RibbonBtnClick"/>
                     <button id="NameGenRandom" label="生成随机姓名" onAction="RibbonBtnClick"/>

@@ -109,7 +109,7 @@ namespace Sevencat.ExcelComAddin
 			ref Array custom)
 		{
 			IocFactory.Application = this.Application;
-			
+
 			var builder = new ContainerBuilder();
 			builder.RegisterInstance(Application);
 			builder.RegisterInstance(Db);
@@ -134,7 +134,7 @@ namespace Sevencat.ExcelComAddin
 		{
 			return _resourceManager.GetXml("excelribbonui.xml");
 		}
-		
+
 		public Image GetImage(string ImageName)
 		{
 			return _resourceManager.GetImage(ImageName);
@@ -143,6 +143,12 @@ namespace Sevencat.ExcelComAddin
 		public void Ribbon_Load(IRibbonUI ribbonUI)
 		{
 			Log.Info("Ribbon_Load");
+		}
+
+		public void RibbonCheckboxClick(IRibbonControl control, bool pressed)
+		{
+			var id = control.Id.ToLower();
+			Log.Info("check box :{0},{1}", id, pressed);
 		}
 
 		public void RibbonBtnClick(IRibbonControl control)
@@ -166,8 +172,7 @@ namespace Sevencat.ExcelComAddin
 				MessageBox.Show("执行异常:" + ex.Message, "异常");
 			}
 		}
-		
-		
+
 
 		public void CommonWordFunc_Click(IRibbonControl control)
 		{

@@ -53,7 +53,8 @@
   <ItemGroup>
     <Compile Include="Service\FileSystemResourceManager.cs" />
     <Compile Include="Service\NameFuncService.cs" />
-    <Compile Include="Service\NameFunctions.cs" />
+    <Compile Include="Service\RibbonFlagService.cs" />
+    <Compile Include="Service\TextProcFuncService.cs" />
     <Compile Include="Ui\FrmNameSplitInput.cs">
       <SubType>Form</SubType>
     </Compile>
