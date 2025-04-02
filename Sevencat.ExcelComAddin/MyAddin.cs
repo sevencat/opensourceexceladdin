@@ -15,6 +15,7 @@ using Sevencat.ExcelAddin.Common;
 using Sevencat.ExcelAddin.Common.Service;
 using Sevencat.ExcelAddin.Common.Util;
 using Sevencat.ExcelAddin.Core;
+using Sevencat.ExcelAddin.Core.Service;
 
 namespace Sevencat.ExcelComAddin
 {
@@ -30,6 +31,7 @@ namespace Sevencat.ExcelComAddin
 		//这个东西比较奇怪，在vsto里面，这个东西得一开始就初始化，
 		//因为ribbon的回调非常非常早，在startup以前，这个设计好奇怪了。
 		private static IResourceManager _resourceManager;
+		private static RibbonFlagService _ribbonFlagService;
 
 		//启动的时候只初始化数据库和日志
 		public MyAddin()
@@ -116,7 +118,11 @@ namespace Sevencat.ExcelComAddin
 			builder.RegisterModule<CoreModule>();
 			builder.RegisterModule<CommonModule>();
 			IocFactory.ServiceProvider = builder.Build();
+
+			//初始化成员变量
 			_resourceManager = IocFactory.Get<IResourceManager>();
+			_ribbonFlagService = IocFactory.Get<RibbonFlagService>();
+
 			this.Application.WorkbookOpenEvent += Application_WorkbookOpenEvent;
 		}
 
@@ -149,6 +155,7 @@ namespace Sevencat.ExcelComAddin
 		{
 			var id = control.Id.ToLower();
 			Log.Info("check box :{0},{1}", id, pressed);
+			_ribbonFlagService.SetFlag(id, pressed);
 		}
 
 		public void RibbonBtnClick(IRibbonControl control)

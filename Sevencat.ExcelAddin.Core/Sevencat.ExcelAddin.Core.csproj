@@ -69,9 +69,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="CoreModule.cs" />
-    <Compile Include="CustomControl1.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="Ui\WinNameSplitInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

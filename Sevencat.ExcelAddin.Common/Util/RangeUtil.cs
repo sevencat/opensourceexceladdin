@@ -1,11 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using NetOffice.ExcelApi;
 using Sevencat.ExcelAddin.Common.Model;
 
 namespace Sevencat.ExcelAddin.Common.Util;
 
 public static class RangeUtil
 {
+	public static List<ExcelAreaItem> ToAreaItems(this Range range)
+	{
+		var address = range.Address;
+		var areas = ToAreaItems(address);
+		if (areas.Count == 0)
+			return areas;
+		var lastrow = range.Worksheet.GetLastRow();
+		foreach (var curarea in areas)
+		{
+			if (curarea.From.Row <= 0)
+				curarea.From.Row = 1;
+			if (curarea.To.Row < 0)
+				curarea.To.Row = lastrow;
+		}
+
+		return areas;
+	}
+
 	public static bool IsOneColumn(this string range)
 	{
 		if (range.IsNullOrWhiteSpace())

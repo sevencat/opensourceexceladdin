@@ -1,4 +1,6 @@
-﻿namespace Sevencat.ExcelAddin.Core.Service;
+﻿using Sevencat.ExcelAddin.Common;
+
+namespace Sevencat.ExcelAddin.Core.Service;
 
 public class TextProcFuncService
 {
